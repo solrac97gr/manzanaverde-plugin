@@ -1,0 +1,13 @@
+{
+  "name": "manzanaverde-plugins",
+  "owner": {
+    "name": "manzanaverde"
+  },
+  "plugins": [
+    {
+      "name": "mv-dev",
+      "source": "./plugins/mv-dev",
+      "description": "Kit completo de desarrollo para Manzana Verde: hooks de calidad, agentes especializados, skills de conocimiento y MCP servers para desarrollo seguro y estandarizado por cualquier miembro del equipo"
+    }
+  ]
+}

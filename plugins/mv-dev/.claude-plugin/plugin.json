@@ -1,0 +1,86 @@
+{
+  "name": "mv-dev",
+  "description": "Plugin de desarrollo de Manzana Verde con hooks de calidad, agentes especializados, skills de conocimiento y MCP servers para queries a base de datos, analisis de componentes y documentacion en Notion",
+  "version": "1.0.0",
+  "author": {
+    "name": "Manzana Verde",
+    "email": "tech@manzanaverde.com"
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "matchPath": ".*\\.(tsx|ts|jsx|js)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/validate-secrets.sh \"${TOOL_FILE_PATH}\"",
+            "description": "Detectar secrets, API keys y credenciales expuestas en el codigo"
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "matchPath": "(src/app|app|pages)/.*\\.tsx$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/validate-nextjs-patterns.sh \"${TOOL_FILE_PATH}\"",
+            "description": "Validar patrones Next.js y estandares de MV en paginas y componentes"
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "matchPath": ".*/(?:routes|controllers|services)/.*\\.ts$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/validate-api-patterns.sh \"${TOOL_FILE_PATH}\"",
+            "description": "Validar patrones de API Express y estandares de backend de MV"
+          }
+        ]
+      }
+    ]
+  },
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp", "--api-key", "${CONTEXT7_API_KEY}"],
+      "description": "Documentacion actualizada de librerias y frameworks directo en el contexto (requiere CONTEXT7_API_KEY)"
+    },
+    "memory-keeper": {
+      "command": "npx",
+      "args": ["-y", "mcp-memory-keeper"],
+      "description": "Memoria persistente entre sesiones de Claude Code - guarda progreso, decisiones y checkpoints"
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"],
+      "description": "Automatizacion de browser para testing E2E y validacion visual de componentes"
+    },
+    "notion": {
+      "command": "npx",
+      "args": ["-y", "@notionhq/notion-mcp-server"],
+      "env": {
+        "NOTION_TOKEN": "${NOTION_TOKEN}"
+      },
+      "description": "Acceso oficial a Notion para leer y buscar documentacion de MV (requiere NOTION_TOKEN)"
+    },
+    "supabase-mcp": {
+      "command": "npx",
+      "args": ["-y", "@supabase/mcp-server-supabase@latest", "--read-only", "--access-token", "${SUPABASE_ACCESS_TOKEN}"],
+      "description": "Acceso a Supabase para gestion de base de datos, tablas y queries en modo solo lectura (requiere SUPABASE_ACCESS_TOKEN)"
+    },
+    "mv-db-query": {
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/servers/mv-db-query-server/dist/index.js"],
+      "description": "Queries seguros de solo lectura a MySQL staging con LIMIT obligatorio y tablas bloqueadas"
+    },
+    "mv-component-analyzer": {
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/servers/mv-component-analyzer/dist/index.js"],
+      "description": "Analisis de componentes Next.js/React para cumplimiento del design system de MV"
+    }
+  }
+}
