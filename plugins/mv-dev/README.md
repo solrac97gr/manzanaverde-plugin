@@ -13,18 +13,18 @@ claude plugin add https://github.com/manzanaverde/manzanaverde-plugin
 ### Skills (10)
 
 **Conocimiento:**
-- `/mv-api-consumer` - Como consumir APIs de MV correctamente
-- `/mv-db-queries` - Queries seguros a la base de datos staging
-- `/mv-design-system` - Design system, colores, tipografia, componentes
-- `/mv-testing` - Como escribir tests en nuestro stack
-- `/mv-deployment` - Procedimientos de deployment
+- `/mv-dev:mv-api-consumer` - Como consumir APIs de MV correctamente
+- `/mv-dev:mv-db-queries` - Queries seguros a la base de datos staging
+- `/mv-dev:mv-design-system` - Design system, colores, tipografia, componentes
+- `/mv-dev:mv-testing` - Como escribir tests en nuestro stack
+- `/mv-dev:mv-deployment` - Procedimientos de deployment
 
 **Accion:**
-- `/start-project` - Iniciar nuevo proyecto (Next.js, Express, monorepo)
-- `/new-feature` - Scaffold completo de feature
-- `/new-page` - Nueva pagina Next.js con metadata y loading states
-- `/create-api` - Nuevo endpoint Express con validacion
-- `/deploy-staging` - Deploy a staging con verificaciones
+- `/mv-dev:start-project` - Iniciar nuevo proyecto (Next.js, Express, monorepo)
+- `/mv-dev:new-feature` - Scaffold completo de feature
+- `/mv-dev:new-page` - Nueva pagina Next.js con metadata y loading states
+- `/mv-dev:create-api` - Nuevo endpoint Express con validacion
+- `/mv-dev:deploy-staging` - Deploy a staging con verificaciones
 
 ### Agentes (4)
 
@@ -76,13 +76,13 @@ Resumen rapido:
 
 ```
 # Crear un nuevo proyecto frontend
-/start-project
+/mv-dev:start-project
 
 # Crear una nueva feature
-/new-feature
+/mv-dev:new-feature
 
 # Deployar a staging
-/deploy-staging
+/mv-dev:deploy-staging
 ```
 
 ## Soporte

@@ -215,13 +215,13 @@ RAILWAY_TOKEN=             # Token de Railway para deploys
 
 | Comando | Descripcion |
 |---------|-------------|
-| `/start-project` | Iniciar un nuevo proyecto MV (Next.js, Express, o monorepo) |
-| `/new-feature` | Scaffold completo de una nueva feature |
-| `/new-page` | Crear una nueva pagina Next.js |
-| `/create-api` | Crear un nuevo endpoint de API Express |
-| `/deploy-staging` | Deployar a staging con pre-flight checks |
-| `/mv-api-consumer` | Guia para consumir APIs de MV correctamente |
-| `/mv-db-queries` | Guia para hacer queries seguros a staging |
-| `/mv-design-system` | Referencia del design system de MV |
-| `/mv-testing` | Guia para escribir tests en el stack de MV |
-| `/mv-deployment` | Procedimientos de deployment |
+| `/mv-dev:start-project` | Iniciar un nuevo proyecto MV (Next.js, Express, o monorepo) |
+| `/mv-dev:new-feature` | Scaffold completo de una nueva feature |
+| `/mv-dev:new-page` | Crear una nueva pagina Next.js |
+| `/mv-dev:create-api` | Crear un nuevo endpoint de API Express |
+| `/mv-dev:deploy-staging` | Deployar a staging con pre-flight checks |
+| `/mv-dev:mv-api-consumer` | Guia para consumir APIs de MV correctamente |
+| `/mv-dev:mv-db-queries` | Guia para hacer queries seguros a staging |
+| `/mv-dev:mv-design-system` | Referencia del design system de MV |
+| `/mv-dev:mv-testing` | Guia para escribir tests en el stack de MV |
+| `/mv-dev:mv-deployment` | Procedimientos de deployment |

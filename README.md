@@ -4,7 +4,7 @@ Plugin de Claude Code que permite a cualquier miembro del equipo de Manzana Verd
 
 ## Que hace este plugin
 
-- **Genera proyectos completos** con un solo comando (`/start-project`)
+- **Genera proyectos completos** con un solo comando (`/mv-dev:start-project`)
 - **Aplica automaticamente** los estandares de codigo, design system y patrones de MV
 - **Valida en tiempo real** que no se expongan secrets, se sigan patrones correctos y se mantenga calidad
 - **Conecta herramientas** como Notion, Supabase, base de datos staging y documentacion de librerias
@@ -34,19 +34,19 @@ Luego `source ~/.zshrc` y reiniciar Claude Code.
 
 ```
 # Crear un nuevo proyecto MV
-/start-project
+/mv-dev:start-project
 
 # Crear una nueva feature con TDD
-/new-feature
+/mv-dev:new-feature
 
 # Crear una pagina Next.js
-/new-page
+/mv-dev:new-page
 
 # Crear un endpoint Express
-/create-api
+/mv-dev:create-api
 
 # Deployar a staging
-/deploy-staging
+/mv-dev:deploy-staging
 ```
 
 ## Que incluye
@@ -55,16 +55,16 @@ Luego `source ~/.zshrc` y reiniciar Claude Code.
 
 | Comando | Tipo | Descripcion |
 |---------|------|-------------|
-| `/start-project` | Accion | Iniciar proyecto Next.js, Express o monorepo |
-| `/new-feature` | Accion | Scaffold completo de feature con TDD |
-| `/new-page` | Accion | Nueva pagina Next.js con metadata y loading states |
-| `/create-api` | Accion | Nuevo endpoint Express con validacion Zod |
-| `/deploy-staging` | Accion | Deploy a staging con pre-flight checks |
-| `/mv-api-consumer` | Conocimiento | Como consumir APIs de MV correctamente |
-| `/mv-db-queries` | Conocimiento | Queries seguros a la base de datos staging |
-| `/mv-design-system` | Conocimiento | Design system, colores, tipografia, componentes |
-| `/mv-testing` | Conocimiento | Como escribir tests en nuestro stack |
-| `/mv-deployment` | Conocimiento | Procedimientos de deployment |
+| `/mv-dev:start-project` | Accion | Iniciar proyecto Next.js, Express o monorepo |
+| `/mv-dev:new-feature` | Accion | Scaffold completo de feature con TDD |
+| `/mv-dev:new-page` | Accion | Nueva pagina Next.js con metadata y loading states |
+| `/mv-dev:create-api` | Accion | Nuevo endpoint Express con validacion Zod |
+| `/mv-dev:deploy-staging` | Accion | Deploy a staging con pre-flight checks |
+| `/mv-dev:mv-api-consumer` | Conocimiento | Como consumir APIs de MV correctamente |
+| `/mv-dev:mv-db-queries` | Conocimiento | Queries seguros a la base de datos staging |
+| `/mv-dev:mv-design-system` | Conocimiento | Design system, colores, tipografia, componentes |
+| `/mv-dev:mv-testing` | Conocimiento | Como escribir tests en nuestro stack |
+| `/mv-dev:mv-deployment` | Conocimiento | Procedimientos de deployment |
 
 ### Agentes (4)
 
