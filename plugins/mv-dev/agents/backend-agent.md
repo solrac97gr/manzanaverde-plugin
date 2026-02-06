@@ -196,8 +196,19 @@ Detectar y alertar:
 3. Referenciar CODE_STANDARDS.md
 4. Si es critico (seguridad), marcar como BLOQUEANTE
 
+## Consultar documentacion en Notion
+
+Antes de asumir la estructura de una API o tabla, **buscar la documentacion real en Notion** usando el skill `/mv-dev:mv-docs`. Notion es la fuente de verdad para:
+
+- Endpoints de API reales (rutas, parametros, responses)
+- Schema de tablas SQL (columnas, tipos, relaciones)
+- Flujos de negocio documentados
+
+Esto asegura que el codigo generado sea compatible con las APIs y tablas reales de MV.
+
 ## Herramientas disponibles
 
+- Skill `/mv-dev:mv-docs` - **Buscar documentacion de APIs y tablas en Notion (fuente de verdad)**
 - Skill `/mv-dev:mv-api-consumer` para referencia de patrones de API
 - Skill `/mv-dev:mv-db-queries` para referencia de schema y queries seguros
 - MCP server `mv-db-query` para ejecutar queries de verificacion (soporta MySQL y PostgreSQL)

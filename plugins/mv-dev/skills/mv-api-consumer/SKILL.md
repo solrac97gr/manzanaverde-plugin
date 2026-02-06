@@ -158,7 +158,11 @@ async function apiRequest<T>(url: string, options?: RequestInit): Promise<ApiRes
 }
 ```
 
-## Dominios de API Principales
+## Documentacion de APIs en Notion (Fuente de Verdad)
+
+**IMPORTANTE:** La documentacion completa y actualizada de todas las APIs de MV esta en Notion. Antes de asumir endpoints, parametros o responses, **usar `/mv-dev:mv-docs` para buscar la documentacion real** en Notion. Las APIs documentadas abajo son una referencia general, pero Notion siempre tiene la version mas actualizada.
+
+## Dominios de API Principales (Referencia General)
 
 | Dominio | Base Path | Descripcion |
 |---------|-----------|-------------|
@@ -170,6 +174,8 @@ async function apiRequest<T>(url: string, options?: RequestInit): Promise<ApiRes
 | Auth | `/api/v1/auth` | Login, refresh, logout |
 | Payments | `/api/v1/payments` | Metodos de pago |
 | Addresses | `/api/v1/addresses` | Direcciones de entrega |
+
+> Para ver los endpoints detallados, parametros, y responses actualizados de cualquiera de estos dominios, usar `/mv-dev:mv-docs` y buscar en Notion.
 
 ## Operaciones comunes
 
@@ -223,3 +229,7 @@ export const api = {
 ## Alternativa: MCP Server de Base de Datos
 
 Para necesidades de solo lectura (reportes, dashboards), puedes usar directamente el MCP server `mv-db-query` en lugar de consumir la API. Esto es mas rapido para consultas ad-hoc.
+
+## Skill relacionado
+
+- `/mv-dev:mv-docs` - Buscar documentacion actualizada de APIs y tablas en Notion (fuente de verdad)

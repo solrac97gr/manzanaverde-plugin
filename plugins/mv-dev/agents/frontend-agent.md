@@ -157,5 +157,6 @@ Ser constructivo y educativo:
 
 ## Herramientas disponibles
 
+- Skill `/mv-dev:mv-docs` - **Buscar documentacion de APIs, componentes y flujos en Notion (fuente de verdad)**
 - Skill `/mv-dev:mv-design-system` para referencia completa de design tokens
 - MCP server `mv-component-analyzer` para analisis automatizado de componentes

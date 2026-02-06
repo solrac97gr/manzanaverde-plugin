@@ -10,7 +10,10 @@ claude plugin add https://github.com/manzanaverde/manzanaverde-plugin
 
 ## Que incluye
 
-### Skills (10)
+### Skills (11)
+
+**Core:**
+- `/mv-dev:mv-docs` - **Buscar documentacion de APIs y tablas SQL en Notion (fuente de verdad)**
 
 **Conocimiento:**
 - `/mv-dev:mv-api-consumer` - Como consumir APIs de MV correctamente

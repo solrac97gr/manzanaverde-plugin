@@ -217,7 +217,7 @@ RAILWAY_TOKEN=             # Token de Railway para deploys
 Si el usuario intenta usar una funcionalidad que requiere un token no configurado, **NO fallar silenciosamente**. Explicar claramente que necesita y como configurarlo:
 
 ### Notion (`NOTION_TOKEN`)
-Se necesita para: documentar proyectos, sincronizar docs, leer documentacion existente.
+Se necesita para: buscar documentacion de APIs y tablas (`/mv-dev:mv-docs`), documentar proyectos, sincronizar docs, leer documentacion existente.
 ```
 Para usar Notion necesitas configurar el token:
 
@@ -288,6 +288,7 @@ Guia completa: ver SETUP.md del plugin (seccion 1)
 
 | Comando | Descripcion |
 |---------|-------------|
+| `/mv-dev:mv-docs` | **Buscar documentacion de APIs y tablas SQL en Notion (fuente de verdad)** |
 | `/mv-dev:start-project` | Iniciar un nuevo proyecto MV (Next.js, Express, o monorepo) |
 | `/mv-dev:new-feature` | Scaffold completo de una nueva feature |
 | `/mv-dev:new-page` | Crear una nueva pagina Next.js |

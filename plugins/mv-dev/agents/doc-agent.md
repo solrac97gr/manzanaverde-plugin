@@ -281,7 +281,15 @@ Si Notion no esta configurado (`NOTION_TOKEN` no disponible):
    - `docs/ARCHITECTURE.md` - Arquitectura
 2. Informar al usuario que puede sincronizar con Notion configurando el token (ver SETUP.md)
 
+## Relacion con el skill mv-docs
+
+El skill `/mv-dev:mv-docs` permite a cualquier persona **buscar** documentacion existente en Notion (APIs, tablas, flujos). Este agente (doc-agent) es el responsable de **crear y actualizar** esa documentacion. Son complementarios:
+
+- `/mv-dev:mv-docs` = **lectura** (buscar info para desarrollar)
+- doc-agent = **escritura** (crear/actualizar docs de proyectos)
+
 ## Herramientas disponibles
 
 - MCP server **notion** (oficial) para buscar, leer, crear y actualizar paginas en Notion
+- Skill `/mv-dev:mv-docs` para verificar que documentacion ya existe antes de duplicar
 - Todos los skills de conocimiento como referencia: `/mv-dev:mv-api-consumer`, `/mv-dev:mv-db-queries`, `/mv-dev:mv-design-system`, `/mv-dev:mv-testing`, `/mv-dev:mv-deployment`

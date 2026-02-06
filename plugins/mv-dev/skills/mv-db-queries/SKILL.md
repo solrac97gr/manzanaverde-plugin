@@ -48,7 +48,11 @@ Herramienta: get_sample_data
 Input: { table: "orders", limit: 5 }
 ```
 
-## Schema de la Base de Datos (Tablas Principales)
+## Documentacion de Tablas en Notion (Fuente de Verdad)
+
+**IMPORTANTE:** La documentacion completa y actualizada de las tablas SQL de MV esta en Notion. Antes de asumir columnas, tipos o relaciones, **usar `/mv-dev:mv-docs` para buscar el schema real** en Notion. Las tablas documentadas abajo son una referencia general, pero Notion siempre tiene la version mas actualizada.
+
+## Schema de la Base de Datos (Referencia General)
 
 ### meals
 | Columna | Tipo | Descripcion |
@@ -195,6 +199,10 @@ LIMIT 20
 - Los JOINs son costosos: limitar a 2-3 tablas por query
 - Usar indices existentes: filtrar por `id`, `user_id`, `country_code`, `created_at`
 - Para queries de conteo grande, usar `COUNT(*)` con filtros adecuados
+
+## Skill relacionado
+
+- `/mv-dev:mv-docs` - Buscar documentacion actualizada de APIs y tablas en Notion (fuente de verdad)
 
 ## Manejo de Fechas
 

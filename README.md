@@ -60,7 +60,7 @@ Luego `source ~/.zshrc` y reiniciar Claude Code.
 
 ## Que incluye
 
-### Skills (10)
+### Skills (11)
 
 | Comando | Tipo | Descripcion |
 |---------|------|-------------|
@@ -69,6 +69,7 @@ Luego `source ~/.zshrc` y reiniciar Claude Code.
 | `/mv-dev:new-page` | Accion | Nueva pagina Next.js con metadata y loading states |
 | `/mv-dev:create-api` | Accion | Nuevo endpoint Express con validacion Zod |
 | `/mv-dev:deploy-staging` | Accion | Deploy a staging con pre-flight checks |
+| `/mv-dev:mv-docs` | **Core** | **Buscar documentacion de APIs y tablas SQL en Notion (fuente de verdad)** |
 | `/mv-dev:mv-api-consumer` | Conocimiento | Como consumir APIs de MV correctamente |
 | `/mv-dev:mv-db-queries` | Conocimiento | Queries seguros a la base de datos staging |
 | `/mv-dev:mv-design-system` | Conocimiento | Design system, colores, tipografia, componentes |
@@ -134,12 +135,13 @@ manzanaverde-plugin/
     ├── ARCHITECTURE.md            # Arquitectura del plugin
     ├── CODE_STANDARDS.md          # Estandares de codigo MV
     │
-    ├── skills/                    # 10 skills invocables
+    ├── skills/                    # 11 skills invocables
     │   ├── start-project/
     │   ├── new-feature/
     │   ├── new-page/
     │   ├── create-api/
     │   ├── deploy-staging/
+    │   ├── mv-docs/               # Core: lookup de APIs y tablas en Notion
     │   ├── mv-api-consumer/
     │   ├── mv-db-queries/
     │   ├── mv-design-system/

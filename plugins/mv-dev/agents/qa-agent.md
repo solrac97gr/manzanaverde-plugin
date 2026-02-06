@@ -127,5 +127,6 @@ it('muestra placeholder cuando la imagen falla', () => {
 
 ## Herramientas disponibles
 
+- Skill `/mv-dev:mv-docs` - **Buscar documentacion de APIs y logica de negocio en Notion para validar edge cases**
 - Skill `/mv-dev:mv-testing` para referencia completa de testing en MV
 - MCP server `mv-component-analyzer` tool `find_missing_tests` para detectar archivos sin tests
