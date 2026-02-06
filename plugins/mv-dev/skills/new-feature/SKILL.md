@@ -135,26 +135,57 @@ import { [featureName]Routes } from '@/features/[feature-name]';
 router.use('/api/v1/[feature-name]', [featureName]Routes);
 ```
 
-## Paso 5: Documentar
+## Paso 5: Actualizar docs/ (OBLIGATORIO)
 
-Crear un comentario en la parte superior del archivo principal:
+Despues de completar la feature, SIEMPRE actualizar la documentacion del proyecto:
 
-```typescript
-/**
- * Feature: [FeatureName]
- * Descripcion: [Descripcion de la feature]
- * Autor: [Nombre via Claude Code]
- * Fecha: [Fecha actual]
- *
- * Endpoints (si backend):
- * - GET /api/v1/[feature-name] - Listar
- * - POST /api/v1/[feature-name] - Crear
- *
- * Componentes (si frontend):
- * - [FeatureName] - Componente principal
- * - use[FeatureName] - Hook de datos
- */
+1. **Si `docs/` no existe**: crearlo con la estructura completa (ver doc-agent)
+2. **Si `docs/` ya existe**: actualizar los archivos afectados:
+
+**Frontend feature:**
+```markdown
+# En docs/COMPONENTS.md agregar:
+## [FeatureName]
+- Ubicacion: `src/features/[feature-name]/`
+- Componentes: [FeatureName], [SubComponents]
+- Hooks: use[FeatureName]
+- APIs que consume: [listar endpoints]
+
+# En docs/CHANGELOG.md agregar:
+## [fecha] - Claude
+- ✅ Feature [FeatureName]: [descripcion corta]
 ```
+
+**Backend feature:**
+```markdown
+# En docs/API.md agregar:
+## [FeatureName]
+### GET /api/v1/[feature-name]
+- Auth: Required
+- Query: page, limit, search
+- Response: { success, data: [...], meta }
+
+### POST /api/v1/[feature-name]
+- Auth: Required
+- Body: { campo1, campo2 }
+- Response 201: { success, data }
+
+# En docs/TABLES.md agregar (si aplica):
+## [tabla]
+| Columna | Tipo | Descripcion |
+...
+
+# En docs/CHANGELOG.md agregar:
+## [fecha] - Claude
+- ✅ Feature [FeatureName]: [descripcion corta]
+```
+
+**Full-stack feature:** actualizar `COMPONENTS.md` + `API.md` + `TABLES.md` + `CHANGELOG.md`
+
+3. **Marcar estado de funcionalidades** en el archivo correspondiente:
+   - ✅ Funcionalidad completada y con tests
+   - 🚧 Funcionalidad parcialmente implementada (WIP)
+   - ❌ Funcionalidad pendiente
 
 ## Paso 6: PR Description
 

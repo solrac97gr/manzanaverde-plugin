@@ -291,6 +291,36 @@ describe('[Recurso] API', () => {
 });
 ```
 
+## Paso 4: Actualizar docs/ (OBLIGATORIO)
+
+Despues de crear el endpoint, SIEMPRE actualizar la documentacion del proyecto:
+
+1. **Si `docs/` no existe**: crearlo con la estructura completa (ver doc-agent)
+2. **Si `docs/` ya existe**: actualizar:
+
+```markdown
+# En docs/API.md agregar:
+## [Recurso]
+
+### [METHOD] /api/v1/[recurso]s
+- **Auth**: Required | Public
+- **Query/Body**: [parametros con tipos]
+- **Validation**: Zod schema [recurso]Schema
+- **Response [status]**: { success: true, data: ... }
+- **Response [error status]**: { success: false, error: "..." }
+
+# En docs/TABLES.md agregar (si creo tablas nuevas):
+## [tabla]
+| Columna | Tipo | Descripcion |
+...
+
+# En docs/CHANGELOG.md agregar:
+## [fecha] - Claude
+- ✅ Endpoint [METHOD] /api/v1/[recurso]s: [descripcion]
+```
+
+3. Marcar el estado: ✅ si esta completo con tests, 🚧 si falta algo
+
 ## Checklist del Endpoint
 
 - [ ] Schema Zod para validacion de input
@@ -301,3 +331,4 @@ describe('[Recurso] API', () => {
 - [ ] Tests para happy path y error cases
 - [ ] Paginacion en endpoints de listado
 - [ ] No exponer datos sensibles en respuestas
+- [ ] `docs/` actualizado con el nuevo endpoint

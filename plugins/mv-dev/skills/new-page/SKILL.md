@@ -196,6 +196,27 @@ describe('[PageName] Page', () => {
 });
 ```
 
+## Paso 7: Actualizar docs/ (OBLIGATORIO)
+
+Despues de crear la pagina, SIEMPRE actualizar la documentacion del proyecto:
+
+1. **Si `docs/` no existe**: crearlo con la estructura completa (ver doc-agent)
+2. **Si `docs/` ya existe**: actualizar:
+
+```markdown
+# En docs/COMPONENTS.md agregar en la seccion "Paginas":
+- `/[ruta]` - [PageName]: [descripcion de la pagina]
+  - Tipo: Server Component | Client Component
+  - Data fetching: [si/no, de donde]
+  - Auth: [requerida/publica]
+
+# En docs/CHANGELOG.md agregar:
+## [fecha] - Claude
+- ✅ Pagina [ruta]: [descripcion corta]
+```
+
+3. Marcar el estado: ✅ si esta completa, 🚧 si es WIP
+
 ## Checklist de la Pagina
 
 Antes de terminar, verificar:
@@ -209,3 +230,4 @@ Antes de terminar, verificar:
 - [ ] Mobile-first responsive (`px-4 sm:px-6 lg:px-8`)
 - [ ] Tipografia correcta (font-heading para h1-h4, font-body para body)
 - [ ] Test basico creado
+- [ ] `docs/` actualizado con la nueva pagina

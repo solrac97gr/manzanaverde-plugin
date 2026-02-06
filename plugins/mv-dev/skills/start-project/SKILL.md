@@ -6,20 +6,35 @@ description: Iniciar un nuevo proyecto de Manzana Verde - Next.js frontend, Expr
 
 Este skill guia la creacion de un nuevo proyecto alineado con los estandares de MV.
 
+## Paso 0: Verificar si hay un discovery previo
+
+Antes de preguntar nada, verificar si existe un archivo `discovery-spec.yaml` o `docs/DISCOVERY.md` en el directorio actual. Si existe, **usarlo como base**:
+
+- **Tipo de proyecto**: ya recomendado en el spec (no preguntar de nuevo)
+- **APIs existentes**: pre-documentar en `docs/API.md`
+- **Tablas existentes**: pre-documentar en `docs/TABLES.md`
+- **Logica de negocio**: documentar en `docs/BUSINESS_LOGIC.md`
+- **Gaps identificados**: agregar como TODOs en `docs/CHANGELOG.md`
+
+Si el usuario hizo `/mv-dev:discovery` en la misma sesion, el spec ya esta en contexto. Usarlo directamente.
+
+**Sugerir discovery si no existe:** Si el usuario no hizo discovery y el brief suena complejo (multiples entidades, integraciones con APIs existentes), sugerir: "Antes de crear el proyecto, puedes ejecutar `/mv-dev:discovery` para identificar que APIs y tablas existentes puedes reutilizar."
+
 ## Paso 1: Preguntar al usuario
 
-Antes de crear cualquier archivo, preguntar:
+Antes de crear cualquier archivo, preguntar (omitir lo que ya se sabe por discovery o PRD):
 
 1. **Nombre del proyecto** - Ej: `mv-landing-campana`, `mv-calculadora-planes`
-2. **Tipo de proyecto:**
+2. **Tipo de proyecto** (omitir si el discovery ya lo recomendo):
    - **Frontend** - Solo Next.js + Vercel (landing pages, dashboards, herramientas UI)
    - **Backend** - Solo Express + Railway (APIs, workers, servicios)
    - **Monorepo** - Frontend + Backend + Shared types (apps completas con logica de negocio)
 3. **Descripcion del proyecto** - Puede ser:
    - **Una linea de descripcion** - Ej: "Landing page para la campana de verano 2025"
    - **Ruta a un archivo PRD** - Ej: `prd.md`, `./docs/prd-campana.md`, `PRD.md`. Si el usuario proporciona una ruta a un archivo PRD, leerlo con la herramienta Read y extraer de el: la descripcion del proyecto, las features principales, los requisitos tecnicos, y cualquier detalle relevante para la arquitectura. Usar esta informacion para tomar decisiones informadas en los pasos siguientes (tipo de proyecto, estructura de carpetas, paginas a crear, endpoints necesarios, etc.) sin volver a preguntar lo que ya esta definido en el PRD.
-4. **Necesita base de datos?** - Si/No (para backend y monorepo). Omitir si el PRD ya lo especifica.
-5. **Necesita autenticacion?** - Si/No. Omitir si el PRD ya lo especifica.
+   - **Omitir si el discovery ya tiene el brief**
+4. **Necesita base de datos?** - Si/No (para backend y monorepo). Omitir si el PRD o discovery ya lo especifica.
+5. **Necesita autenticacion?** - Si/No. Omitir si el PRD o discovery ya lo especifica.
 
 ## Paso 2: Crear proyecto segun tipo
 
@@ -62,6 +77,13 @@ Luego crear esta estructura adicional:
 │   ├── e2e/                     # Tests Playwright
 │   ├── setup.ts                 # Setup de tests
 │   └── factories.ts             # Test data factories
+├── docs/                        # Documentacion del proyecto (sync con Notion)
+│   ├── BUSINESS_LOGIC.md        # Logica de negocio, reglas, flujos
+│   ├── API.md                   # Endpoints, params, responses
+│   ├── TABLES.md                # Schema de tablas SQL usadas
+│   ├── COMPONENTS.md            # Componentes, hooks, servicios
+│   ├── ARCHITECTURE.md          # Estructura, patron de datos, env vars
+│   └── CHANGELOG.md             # Historial de cambios
 ├── public/
 │   └── favicon.ico
 ├── .env.example                 # Variables de entorno (sin valores)
@@ -274,6 +296,13 @@ Estructura:
 ├── tests/
 │   ├── setup.ts
 │   └── factories.ts
+├── docs/                        # Documentacion del proyecto (sync con Notion)
+│   ├── BUSINESS_LOGIC.md
+│   ├── API.md
+│   ├── TABLES.md
+│   ├── COMPONENTS.md
+│   ├── ARCHITECTURE.md
+│   └── CHANGELOG.md
 ├── .env.example
 ├── .gitignore
 ├── CLAUDE.md
@@ -295,6 +324,13 @@ Estructura:
 │       │   └── utils/           # Utilidades compartidas
 │       ├── package.json
 │       └── tsconfig.json
+├── docs/                        # Documentacion del proyecto (sync con Notion)
+│   ├── BUSINESS_LOGIC.md
+│   ├── API.md
+│   ├── TABLES.md
+│   ├── COMPONENTS.md
+│   ├── ARCHITECTURE.md
+│   └── CHANGELOG.md
 ├── package.json                 # Root con workspaces
 ├── .gitignore
 ├── CLAUDE.md
@@ -343,25 +379,29 @@ MV standard project with Next.js/Express, TypeScript strict,
 Tailwind CSS v4 with MV design tokens, and testing setup."
 ```
 
-## Paso 5: Documentar proyecto en Notion
+## Paso 5: Documentar proyecto
 
-Si `NOTION_TOKEN` esta configurado, crear la documentacion del proyecto en Notion usando el doc-agent:
+### 5a. Crear documentacion local (SIEMPRE)
+
+Crear los archivos en `docs/` con contenido inicial basado en la informacion del proyecto:
+
+- **`docs/BUSINESS_LOGIC.md`** - Si el usuario proporciono un PRD, extraer toda la logica de negocio (reglas, flujos, entidades, validaciones, edge cases). Si no hay PRD, crear plantilla vacia para llenar despues.
+- **`docs/API.md`** - Pre-llenar si el proyecto es backend o monorepo (con el formato estandar de MV). Si es frontend, crear plantilla para cuando se consuman APIs.
+- **`docs/TABLES.md`** - Crear plantilla para documentar las tablas SQL que use el proyecto.
+- **`docs/COMPONENTS.md`** - Pre-llenar si el proyecto es frontend o monorepo.
+- **`docs/ARCHITECTURE.md`** - Estructura de carpetas, patron de datos, dependencias, env vars.
+- **`docs/CHANGELOG.md`** - Primera entrada con la creacion del proyecto.
+
+### 5b. Sincronizar con Notion (si hay token)
+
+Si `NOTION_TOKEN` esta configurado:
 
 1. **Preguntar al usuario el link del repositorio en GitHub** (ej: `https://github.com/manzanaverde/mv-landing-campana`). Este link es el identificador unico del proyecto en Notion.
 2. **Buscar en Notion** si ya existe una pagina con ese link de GitHub
-3. Si **NO existe**: crear la pagina del proyecto con la estructura definida en el doc-agent:
-   - **Overview**: nombre, descripcion, stack, link GitHub, URLs
-   - **Business Logic**: si el usuario proporciono un PRD, extraer toda la logica de negocio (reglas, flujos, entidades, validaciones, edge cases). Si no hay PRD, dejar la seccion con plantilla para llenar despues.
-   - **API Documentation**: pre-llenar si el proyecto es backend o monorepo
-   - **Components**: pre-llenar si el proyecto es frontend o monorepo
-   - **Architecture**: estructura de carpetas, patron de datos, dependencias, env vars
-   - **Changelog**: primera entrada con la creacion del proyecto
-4. Si **YA existe**: leer la documentacion existente e informar al usuario que el proyecto ya esta documentado
+3. Si **NO existe**: crear la pagina del proyecto en Notion con el mismo contenido que se escribio en `docs/`
+4. Si **YA existe**: leer la documentacion existente de Notion, escribirla en `docs/` localmente e informar al usuario que el proyecto ya estaba documentado
 
-Si Notion no esta configurado, crear los archivos de documentacion localmente:
-- `docs/BUSINESS_LOGIC.md`
-- `docs/API.md`
-- `docs/ARCHITECTURE.md`
+Si `NOTION_TOKEN` no esta configurado, informar: "La documentacion se creo localmente en docs/. Para sincronizar con Notion, configura el NOTION_TOKEN (ver SETUP.md)."
 
 ## Paso 6: Siguientes pasos
 

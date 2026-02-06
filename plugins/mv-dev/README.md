@@ -10,9 +10,10 @@ claude plugin add https://github.com/manzanaverde/manzanaverde-plugin
 
 ## Que incluye
 
-### Skills (11)
+### Skills (12)
 
 **Core:**
+- `/mv-dev:discovery` - **Descubrimiento tecnico: analiza brief y encuentra APIs, tablas y servicios existentes**
 - `/mv-dev:mv-docs` - **Buscar documentacion de APIs y tablas SQL en Notion (fuente de verdad)**
 
 **Conocimiento:**

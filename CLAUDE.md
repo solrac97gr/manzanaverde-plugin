@@ -109,6 +109,8 @@ try {
 - **Idioma:** Strings de UI en espanol, codigo y variables en ingles
 - **Archivos:** camelCase para archivos, PascalCase para componentes React
 - **Branches:** `feature/nombre-corto`, `fix/nombre-corto`, `hotfix/nombre-corto`
+- **Docs auto-update:** Despues de cada tarea completada, SIEMPRE actualizar `docs/` con: nuevos componentes, APIs consumidas, estructura actual, estado de funcionalidades (✅ done, 🚧 WIP, ❌ pendiente). Si `docs/` no existe, crearlo.
+- **Docs sync:** Al hacer `git push`, sincronizar `docs/` a Notion automaticamente (si `NOTION_TOKEN` esta configurado)
 
 ---
 
@@ -288,6 +290,7 @@ Guia completa: ver SETUP.md del plugin (seccion 1)
 
 | Comando | Descripcion |
 |---------|-------------|
+| `/mv-dev:discovery` | **Descubrimiento tecnico: analiza brief de negocio y encuentra APIs, tablas y servicios existentes** |
 | `/mv-dev:mv-docs` | **Buscar documentacion de APIs y tablas SQL en Notion (fuente de verdad)** |
 | `/mv-dev:start-project` | Iniciar un nuevo proyecto MV (Next.js, Express, o monorepo) |
 | `/mv-dev:new-feature` | Scaffold completo de una nueva feature |

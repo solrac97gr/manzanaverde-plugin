@@ -42,6 +42,9 @@ Luego `source ~/.zshrc` y reiniciar Claude Code.
 ## Uso rapido
 
 ```
+# Descubrir APIs y tablas existentes antes de empezar
+/mv-dev:discovery
+
 # Crear un nuevo proyecto MV
 /mv-dev:start-project
 
@@ -60,16 +63,17 @@ Luego `source ~/.zshrc` y reiniciar Claude Code.
 
 ## Que incluye
 
-### Skills (11)
+### Skills (12)
 
 | Comando | Tipo | Descripcion |
 |---------|------|-------------|
+| `/mv-dev:discovery` | **Core** | **Descubrimiento tecnico: analiza brief y encuentra APIs, tablas y servicios existentes** |
+| `/mv-dev:mv-docs` | **Core** | **Buscar documentacion de APIs y tablas SQL en Notion (fuente de verdad)** |
 | `/mv-dev:start-project` | Accion | Iniciar proyecto Next.js, Express o monorepo |
 | `/mv-dev:new-feature` | Accion | Scaffold completo de feature con TDD |
 | `/mv-dev:new-page` | Accion | Nueva pagina Next.js con metadata y loading states |
 | `/mv-dev:create-api` | Accion | Nuevo endpoint Express con validacion Zod |
 | `/mv-dev:deploy-staging` | Accion | Deploy a staging con pre-flight checks |
-| `/mv-dev:mv-docs` | **Core** | **Buscar documentacion de APIs y tablas SQL en Notion (fuente de verdad)** |
 | `/mv-dev:mv-api-consumer` | Conocimiento | Como consumir APIs de MV correctamente |
 | `/mv-dev:mv-db-queries` | Conocimiento | Queries seguros a la base de datos staging |
 | `/mv-dev:mv-design-system` | Conocimiento | Design system, colores, tipografia, componentes |
@@ -135,7 +139,8 @@ manzanaverde-plugin/
     ├── ARCHITECTURE.md            # Arquitectura del plugin
     ├── CODE_STANDARDS.md          # Estandares de codigo MV
     │
-    ├── skills/                    # 11 skills invocables
+    ├── skills/                    # 12 skills invocables
+    │   ├── discovery/             # Core: descubrimiento tecnico pre-proyecto
     │   ├── start-project/
     │   ├── new-feature/
     │   ├── new-page/
