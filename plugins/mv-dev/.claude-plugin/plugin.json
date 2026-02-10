@@ -56,8 +56,7 @@
   },
   "mcpServers": {
     "context7": {
-      "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp", "--api-key", "${CONTEXT7_API_KEY}"],
+      "command": "${CLAUDE_PLUGIN_ROOT}/servers/context7-wrapper.sh",
       "description": "Documentacion actualizada de librerias y frameworks directo en el contexto (requiere CONTEXT7_API_KEY)"
     },
     "memory-keeper": {
@@ -71,16 +70,11 @@
       "description": "Automatizacion de browser para testing E2E y validacion visual de componentes"
     },
     "notion": {
-      "command": "npx",
-      "args": ["-y", "@notionhq/notion-mcp-server"],
-      "env": {
-        "NOTION_TOKEN": "${NOTION_TOKEN}"
-      },
+      "command": "${CLAUDE_PLUGIN_ROOT}/servers/notion-wrapper.sh",
       "description": "Acceso oficial a Notion para crear, leer y actualizar documentacion de proyectos de MV (requiere NOTION_TOKEN)"
     },
     "supabase-mcp": {
-      "command": "npx",
-      "args": ["-y", "@supabase/mcp-server-supabase@latest", "--access-token", "${SUPABASE_ACCESS_TOKEN}"],
+      "command": "${CLAUDE_PLUGIN_ROOT}/servers/supabase-wrapper.sh",
       "description": "Acceso completo a Supabase: crear tablas, migraciones, queries, edge functions (requiere SUPABASE_ACCESS_TOKEN)"
     },
     "mv-db-query": {
