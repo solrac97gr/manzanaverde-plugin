@@ -78,9 +78,8 @@
       "description": "Acceso completo a Supabase: crear tablas, migraciones, queries, edge functions (requiere SUPABASE_ACCESS_TOKEN)"
     },
     "mv-db-query": {
-      "command": "node",
-      "args": ["${CLAUDE_PLUGIN_ROOT}/servers/mv-db-query-server/dist/index.js"],
-      "description": "Queries seguros de solo lectura a MySQL staging con LIMIT obligatorio y tablas bloqueadas"
+      "command": "${CLAUDE_PLUGIN_ROOT}/servers/db-wrapper.sh",
+      "description": "Queries seguros de solo lectura a MySQL/PostgreSQL con LIMIT obligatorio y tablas bloqueadas (requiere DB_ACCESS_* vars)"
     },
     "mv-component-analyzer": {
       "command": "node",
