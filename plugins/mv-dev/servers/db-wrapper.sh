@@ -10,6 +10,15 @@ fi
 
 # Get the plugin root directory (parent of servers/)
 PLUGIN_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+SERVER_DIR="$PLUGIN_ROOT/servers/mv-db-query-server"
+
+# Auto-install native dependencies if not present (first run)
+if [ ! -d "$SERVER_DIR/node_modules/mysql2" ] || [ ! -d "$SERVER_DIR/node_modules/pg" ]; then
+    echo "⚙️  Installing database drivers (mysql2, pg) - first run only..." >&2
+    cd "$SERVER_DIR"
+    npm install --production --silent mysql2 pg >&2
+    echo "✅ Database drivers installed" >&2
+fi
 
 # Execute the mv-db-query MCP server with node
-exec node "$PLUGIN_ROOT/servers/mv-db-query-server/dist/index.js" "$@"
+exec node "$SERVER_DIR/dist/index.js" "$@"
