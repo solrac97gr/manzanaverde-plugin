@@ -1,192 +1,191 @@
 ---
-description: Genera un archivo Gherkin BDD desde una feature documentada en Notion
+description: Generate a Gherkin BDD file from a feature documented in Notion
 ---
 
-# Crear Feature File desde Notion
+# Create Feature File from Notion
 
-Busca una feature documentada en Notion, extrae los requisitos y genera un archivo Gherkin (.feature) con escenarios BDD/Cucumber.
+Search for a feature documented in Notion, extract requirements, and generate a Gherkin (.feature) file with BDD/Cucumber scenarios.
 
-## Paso 1: Buscar la feature en Notion
+## Step 1: Search for the feature in Notion
 
-Usa el MCP de Notion para buscar la página de la feature:
+Use the Notion MCP to search for the feature page:
 
 ```
-Buscar en Notion: "[nombre de la feature]"
+Search in Notion: "[feature name]"
 ```
 
-**Ejemplo:** "Crear modulo Pedido tienda – Menú diario para backoffice"
+**Example:** "Create Store Order module – Daily Menu for backoffice"
 
-Si hay múltiples resultados, pregunta al usuario cuál es la correcta.
+If there are multiple results, ask the user which is the correct one.
 
-## Paso 2: Leer el contenido de la feature
+## Step 2: Read the feature content
 
-Una vez identificada la página correcta:
+Once the correct page is identified:
 
-1. Leer el contenido completo de la página
-2. Leer las sub-páginas si existen (requisitos, casos de uso, etc.)
-3. Extraer:
-   - **Descripción**: Qué hace la feature
-   - **Actores**: Quién usa la feature (ej: admin, chef, usuario)
-   - **Requisitos funcionales**: Qué debe hacer el sistema
-   - **Casos de uso**: Flujos principales
-   - **Criterios de aceptación**: Condiciones de éxito
-   - **Restricciones**: Validaciones, límites
+1. Read the complete page content
+2. Read sub-pages if they exist (requirements, use cases, etc.)
+3. Extract:
+   - **Description**: What the feature does
+   - **Actors**: Who uses the feature (e.g., admin, chef, user)
+   - **Functional requirements**: What the system must do
+   - **Use cases**: Main flows
+   - **Acceptance criteria**: Success conditions
+   - **Constraints**: Validations, limits
 
-## Paso 3: Generar el archivo Gherkin
+## Step 3: Generate the Gherkin file
 
-Crear archivo en: `features/[nombre-normalizado].feature`
+Create file at: `features/[normalized-name].feature`
 
-**Nombre normalizado:** kebab-case, sin acentos, sin espacios
-- "Crear modulo Pedido tienda" → `crear-modulo-pedido-tienda.feature`
+**Normalized name:** kebab-case, no accents, no spaces
+- "Create Store Order module" → `create-store-order-module.feature`
 
-### Estructura del archivo Gherkin:
+### Gherkin file structure:
 
 ```gherkin
-# language: es
-Característica: [Nombre de la Feature]
-  Como [actor]
-  Quiero [objetivo]
-  Para [beneficio]
+Feature: [Feature Name]
+  As a [actor]
+  I want to [objective]
+  So that [benefit]
 
-  Antecedentes:
-    Dado que estoy autenticado como [actor]
-    Y tengo permisos de [rol]
+  Background:
+    Given I am authenticated as [actor]
+    And I have [role] permissions
 
-  Escenario: [Caso de uso principal]
-    Dado que [precondición]
-    Cuando [acción del usuario]
-    Entonces [resultado esperado]
-    Y [verificaciones adicionales]
+  Scenario: [Main use case]
+    Given [precondition]
+    When [user action]
+    Then [expected result]
+    And [additional verifications]
 
-  Escenario: [Caso de uso alternativo]
-    Dado que [precondición]
-    Cuando [acción del usuario]
-    Entonces [resultado esperado]
+  Scenario: [Alternative use case]
+    Given [precondition]
+    When [user action]
+    Then [expected result]
 
-  Escenario: [Manejo de errores]
-    Dado que [precondición]
-    Cuando [acción inválida]
-    Entonces [mensaje de error]
-    Y [estado del sistema no cambia]
+  Scenario: [Error handling]
+    Given [precondition]
+    When [invalid action]
+    Then [error message]
+    And [system state does not change]
 
-  Esquema del escenario: [Casos múltiples con datos]
-    Dado que <precondición>
-    Cuando <acción>
-    Entonces <resultado>
+  Scenario Outline: [Multiple cases with data]
+    Given <precondition>
+    When <action>
+    Then <result>
 
-    Ejemplos:
-      | campo1   | campo2   | resultado    |
-      | valor1   | valor2   | esperado1    |
-      | valor3   | valor4   | esperado2    |
+    Examples:
+      | field1   | field2   | result       |
+      | value1   | value2   | expected1    |
+      | value3   | value4   | expected2    |
 ```
 
-## Paso 4: Reglas para generar escenarios
+## Step 4: Rules for generating scenarios
 
-### De Requisitos Funcionales → Escenarios
+### From Functional Requirements → Scenarios
 
-Para cada requisito funcional, crear al menos:
-1. **Escenario happy path**: Flujo exitoso
-2. **Escenario de validación**: Datos inválidos
-3. **Escenario de permisos**: Usuario sin acceso
+For each functional requirement, create at least:
+1. **Happy path scenario**: Successful flow
+2. **Validation scenario**: Invalid data
+3. **Permissions scenario**: User without access
 
-### De Casos de Uso → Escenarios
+### From Use Cases → Scenarios
 
-Cada caso de uso documentado → 1 escenario Gherkin
+Each documented use case → 1 Gherkin scenario
 
-### De Criterios de Aceptación → Verificaciones
+### From Acceptance Criteria → Verifications
 
-Cada criterio → 1 línea `Entonces` o `Y`
+Each criterion → 1 `Then` or `And` line
 
-### Ejemplos de conversión:
+### Conversion examples:
 
-**Requisito:** "El admin puede crear un menú diario con fecha y productos"
+**Requirement:** "The admin can create a daily menu with date and products"
 
-**→ Escenario:**
+**→ Scenario:**
 ```gherkin
-Escenario: Admin crea menú diario exitosamente
-  Dado que soy un administrador autenticado
-  Y estoy en la página de menús
-  Cuando selecciono la fecha "2026-02-15"
-  Y agrego los productos "Ensalada César, Pollo al horno, Arroz integral"
-  Y hago clic en "Guardar menú"
-  Entonces veo el mensaje "Menú creado exitosamente"
-  Y el menú aparece en la lista de menús
-  Y la fecha es "2026-02-15"
+Scenario: Admin creates daily menu successfully
+  Given I am an authenticated administrator
+  And I am on the menus page
+  When I select the date "2026-02-15"
+  And I add the products "Caesar Salad, Baked Chicken, Brown Rice"
+  And I click "Save menu"
+  Then I see the message "Menu created successfully"
+  And the menu appears in the menu list
+  And the date is "2026-02-15"
 ```
 
-**Validación:** "La fecha no puede ser pasada"
+**Validation:** "The date cannot be in the past"
 
-**→ Escenario:**
+**→ Scenario:**
 ```gherkin
-Escenario: Error al crear menú con fecha pasada
-  Dado que soy un administrador autenticado
-  Y estoy en la página de menús
-  Cuando selecciono la fecha "2026-01-01"
-  Y hago clic en "Guardar menú"
-  Entonces veo el error "La fecha no puede ser pasada"
-  Y el menú no se crea
+Scenario: Error when creating menu with past date
+  Given I am an authenticated administrator
+  And I am on the menus page
+  When I select the date "2026-01-01"
+  And I click "Save menu"
+  Then I see the error "Date cannot be in the past"
+  And the menu is not created
 ```
 
-## Paso 5: Crear el archivo
+## Step 5: Create the file
 
 ```
-Write archivo: features/[nombre-normalizado].feature
+Write file: features/[normalized-name].feature
 ```
 
-Mostrar al usuario:
-- ✅ Ruta del archivo creado
-- 📝 Número de escenarios generados
-- 🔍 Resumen de lo que cubre el archivo
+Show the user:
+- ✅ Created file path
+- 📝 Number of scenarios generated
+- 🔍 Summary of what the file covers
 
-## Paso 6: Sugerencias adicionales
+## Step 6: Additional suggestions
 
-Después de crear el archivo, sugerir:
+After creating the file, suggest:
 
-1. **Revisar y ajustar**: El archivo es un punto de partida
-2. **Agregar más escenarios**: Edge cases específicos
-3. **Implementar los steps**: Crear step definitions en el framework de testing
-4. **Vincular con código**: Mantener el .feature actualizado con el desarrollo
+1. **Review and adjust**: The file is a starting point
+2. **Add more scenarios**: Specific edge cases
+3. **Implement the steps**: Create step definitions in the testing framework
+4. **Link with code**: Keep the .feature file updated with development
 
-## Ejemplo completo
+## Complete example
 
-**Input:** `create-feature-file "Crear modulo Pedido tienda – Menú diario para backoffice"`
+**Input:** `create-feature-file "Create Store Order module – Daily Menu for backoffice"`
 
 **Output:**
 ```
-✅ Archivo creado: features/crear-modulo-pedido-tienda-menu-diario.feature
-📝 6 escenarios generados:
-   - Admin crea menú diario exitosamente
-   - Admin edita menú existente
-   - Error al crear menú con fecha pasada
-   - Error sin productos seleccionados
-   - Admin visualiza menús por rango de fechas
-   - Admin elimina menú no utilizado
+✅ File created: features/create-store-order-module-daily-menu.feature
+📝 6 scenarios generated:
+   - Admin creates daily menu successfully
+   - Admin edits existing menu
+   - Error when creating menu with past date
+   - Error without selected products
+   - Admin views menus by date range
+   - Admin deletes unused menu
 
-🔍 Cobertura:
-   - Casos de uso principales: 3/3
-   - Validaciones: 2/2
-   - Permisos: Verificado para rol admin
+🔍 Coverage:
+   - Main use cases: 3/3
+   - Validations: 2/2
+   - Permissions: Verified for admin role
 ```
 
-## Notas importantes
+## Important notes
 
-- **Idioma:** Gherkin en español (`# language: es`)
-- **Nombres descriptivos:** Los escenarios deben ser auto-explicativos
-- **Dado/Cuando/Entonces:** Seguir estrictamente este orden
-- **Verificaciones múltiples:** Usar `Y` para verificaciones adicionales
-- **Tablas de datos:** Usar `Esquema del escenario` para casos similares con datos diferentes
-- **Comentarios:** Agregar `#` para explicar contexto complejo
-- **Tags:** Usar `@tag` antes del escenario para categorizar (ej: `@smoke`, `@regression`, `@admin`)
+- **Language:** Gherkin in English
+- **Descriptive names:** Scenarios must be self-explanatory
+- **Given/When/Then:** Strictly follow this order
+- **Multiple verifications:** Use `And` for additional verifications
+- **Data tables:** Use `Scenario Outline` for similar cases with different data
+- **Comments:** Add `#` to explain complex context
+- **Tags:** Use `@tag` before the scenario to categorize (e.g., `@smoke`, `@regression`, `@admin`)
 
-## Configuración del proyecto
+## Project configuration
 
-Asegurarse que el proyecto tenga:
+Ensure the project has:
 
 ```
 features/
-├── [feature-name].feature    # Archivos Gherkin
-└── step_definitions/          # Implementaciones de pasos
+├── [feature-name].feature    # Gherkin files
+└── step_definitions/          # Step implementations
     └── [feature-name]Steps.ts
 ```
 
-Framework recomendado: **Cucumber.js** o **Jest-Cucumber**
+Recommended framework: **Cucumber.js** or **Jest-Cucumber**
