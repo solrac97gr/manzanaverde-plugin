@@ -2,6 +2,30 @@
 
 Todos los cambios notables del plugin mv-dev se documentan aqui.
 
+## [1.6.0] - 2026-02-24
+
+### Added
+- **Flutter Skills Suite**: Agente orquestador `flutter-orchestrator-agent` que coordina desarrollo de apps Flutter
+  - `flutter-architecture`: Definir/revisar arquitectura con ventajas y desventajas
+  - `flutter-visual-style`: Configurar design system de MV (colores, tipografia, spacing)
+  - `flutter-brand-identity`: Revisar identidad de marca (logo, iconos, animaciones)
+  - `flutter-new-feature`: Scaffold de features siguiendo arquitectura del proyecto
+  - `flutter-new-screen`: Crear pantallas con estados (carga, error, vacio, datos) + widget tests
+  - `flutter-component`: Widgets reutilizables con design tokens, variantes y tests
+- **BDD Test Generation**: Agente `gherkin-test-generator-agent` para generar tests desde archivos Gherkin
+  - `gherkin-to-tests`: Convertir archivos `.feature` a tests ejecutables (Jest, RTL, Playwright)
+- Notion Gherkin Agent para obtener requerimientos de Notion y generar archivos `.feature` listos para BDD
+
+### Changed
+- Flutter skills activadas automaticamente cuando se detecta trabajo en proyectos Dart/Flutter
+- Mejora en arquitectura del plugin para soportar orquestadores de agentes
+
+## [1.5.0] - 2026-02-20
+
+### Added
+- Agente Notion Gherkin para extraer requerimientos de Notion y generar archivos Gherkin (.feature)
+- Skill `notion-gherkin` para BDD con aceptacion tests
+
 ## [1.4.0] - 2026-02-06
 
 ### Added
