@@ -317,6 +317,7 @@ Guia completa: ver SETUP.md del plugin (seccion 1)
 | `/mv-dev:mv-testing` | Guia para escribir tests en el stack de MV |
 | `/mv-dev:mv-deployment` | Procedimientos de deployment |
 | `/mv-dev:notion-gherkin` | **Obtener requerimientos de Notion y generar archivos Gherkin (.feature) listos para BDD** |
+| `/mv-dev:gherkin-to-tests` | **Leer archivos Gherkin (.feature) de features/ y generar tests ejecutables (Jest, RTL, Playwright) por tipo de escenario** |
 
 ### Skills Flutter (App Movil)
 

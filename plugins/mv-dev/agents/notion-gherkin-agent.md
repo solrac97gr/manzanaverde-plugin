@@ -253,7 +253,7 @@ Requiere revision manual:
   ⚠️  Politica de cambio en MX puede tener reglas fiscales adicionales
 
 Siguiente paso sugerido:
-  - Conectar con Playwright usando el skill /mv-dev:mv-testing
+  - Generar los tests automaticamente con /mv-dev:gherkin-to-tests
   - Revisar con el PM los escenarios marcados con ⚠️
 ```
 
@@ -296,4 +296,5 @@ Sin `NOTION_TOKEN`, el agente puede generar Gherkin igualmente desde:
 - Skill `/mv-dev:mv-docs` - Consultar documentacion de APIs y logica de negocio (local + Notion)
 - Skill `/mv-dev:discovery` - Descubrir APIs y servicios existentes antes de generar escenarios
 - Skill `/mv-dev:mv-testing` - Referencia del stack de testing para conectar Gherkin con la implementacion (Jest, RTL, Playwright)
+- Skill `/mv-dev:gherkin-to-tests` - **Generar tests ejecutables automaticamente desde los archivos .feature generados**
 - MCP server `playwright` - Para validar manualmente los escenarios E2E generados
