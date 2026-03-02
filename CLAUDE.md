@@ -316,3 +316,18 @@ Guia completa: ver SETUP.md del plugin (seccion 1)
 | `/mv-dev:mv-design-system` | Referencia del design system de MV |
 | `/mv-dev:mv-testing` | Guia para escribir tests en el stack de MV |
 | `/mv-dev:mv-deployment` | Procedimientos de deployment |
+| `/mv-dev:notion-gherkin` | **Obtener requerimientos de Notion y generar archivos Gherkin (.feature) listos para BDD** |
+| `/mv-dev:gherkin-to-tests` | **Leer archivos Gherkin (.feature) de features/ y generar tests ejecutables (Jest, RTL, Playwright) por tipo de escenario** |
+
+### Skills Flutter (App Movil)
+
+> **Nota:** El agente `flutter-orchestrator-agent` se activa automaticamente cuando detecta trabajo en proyectos Flutter/Dart y coordina los siguientes skills.
+
+| Comando | Descripcion |
+|---------|-------------|
+| `/mv-dev:flutter-architecture` | **Definir o revisar la arquitectura del proyecto Flutter - muestra opciones con ventajas y desventajas** |
+| `/mv-dev:flutter-visual-style` | **Configurar y auditar el design system de MV en Flutter - colores, tipografia, spacing, border radius** |
+| `/mv-dev:flutter-brand-identity` | **Revisar identidad de marca en Flutter - logo, iconos, tono del texto, animaciones, splash screen** |
+| `/mv-dev:flutter-new-feature` | Scaffold completo de una nueva feature en Flutter siguiendo la arquitectura del proyecto |
+| `/mv-dev:flutter-new-screen` | Crear una nueva pantalla Flutter con todos los estados (carga, error, vacio, datos) y widget tests |
+| `/mv-dev:flutter-component` | Crear un widget reutilizable con design tokens de MV, variantes y tests |

@@ -51,6 +51,17 @@
             "description": "Validar patrones de API Express y estandares de backend de MV"
           }
         ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "matchPath": ".*\\.dart$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/validate-flutter-patterns.sh \"${TOOL_FILE_PATH}\"",
+            "description": "Validar design tokens, arquitectura y estandares de marca MV en archivos Dart de Flutter"
+          }
+        ]
       }
     ]
   },
